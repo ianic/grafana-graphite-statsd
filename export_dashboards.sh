@@ -11,7 +11,6 @@
 
 
 
-
 export HOST=http://localhost:3000
 
 for dash in $(curl -s -k -H "Authorization: Bearer ${KEY}" ${HOST}/api/search\?query\=\& | jq -r '.[] | select(.type == "dash-db") | .uid'); do
