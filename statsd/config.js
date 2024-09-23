@@ -5,7 +5,7 @@
       graphiteHost: process.env.GRAPHITE_PORT_2003_TCP_ADDR || "127.0.0.1",
       port: parseInt(process.env.STATSD_PORT || 8125),
       dumpMessages: process.env.STATSD_DUMP_MSG == "true",
-      debug: process.env.STATSD_DEBUG == "true",
+      debug: process.env.STATSD_DEBUG == "false",
       flushInterval: parseInt(process.env.STATSD_FLUSH_INTERVAL|| 10000),
 
       graphite: {
@@ -17,14 +17,14 @@
         {server: "./servers/udp", address: "0.0.0.0", port: 8125}
       ],
 
-      repeater: [
-        {
-          host: (process.env.STATSD_EXPORTER_HOST || 'statsd-exporter'),
-          port: parseInt(process.env.STATSD_EXPORTER_PORT || 9125) }
-      ],
+      // repeater: [
+      //   {
+      //     host: (process.env.STATSD_EXPORTER_HOST || 'statsd-exporter'),
+      //     port: parseInt(process.env.STATSD_EXPORTER_PORT || 9125) }
+      // ],
 
-      backends: [
-        './backends/graphite', './backends/repeater'
-      ]
+      // backends: [
+      //   './backends/graphite', './backends/repeater'
+      // ]
   };
 })()
