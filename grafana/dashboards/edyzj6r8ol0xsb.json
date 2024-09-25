@@ -81,7 +81,32 @@
             },
             "unit": "bytes"
           },
-          "overrides": []
+          "overrides": [
+            {
+              "__systemRef": "hideSeriesFrom",
+              "matcher": {
+                "id": "byNames",
+                "options": {
+                  "mode": "exclude",
+                  "names": [
+                    "rss"
+                  ],
+                  "prefix": "All except:",
+                  "readOnly": true
+                }
+              },
+              "properties": [
+                {
+                  "id": "custom.hideFrom",
+                  "value": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": true
+                  }
+                }
+              ]
+            }
+          ]
         },
         "gridPos": {
           "h": 14,
@@ -110,7 +135,7 @@
             },
             "refCount": 0,
             "refId": "A",
-            "target": "stats.io.recv_bytes"
+            "target": "alias(stats.gauges.mem.size, 'vm')"
           },
           {
             "datasource": {
@@ -120,10 +145,40 @@
             "hide": false,
             "refCount": 0,
             "refId": "B",
-            "target": "stats.io.send_bytes"
+            "target": "alias(stats.gauges.mem.rss, 'rss')"
+          },
+          {
+            "datasource": {
+              "type": "graphite",
+              "uid": "P1D261A8554D2DA69"
+            },
+            "hide": true,
+            "refCount": 0,
+            "refId": "C",
+            "target": "alias(stats.gauges.mem.share, 'share')"
+          },
+          {
+            "datasource": {
+              "type": "graphite",
+              "uid": "P1D261A8554D2DA69"
+            },
+            "hide": true,
+            "refCount": 0,
+            "refId": "D",
+            "target": "alias(stats.gauges.mem.data, 'data')"
+          },
+          {
+            "datasource": {
+              "type": "graphite",
+              "uid": "P1D261A8554D2DA69"
+            },
+            "hide": true,
+            "refCount": 0,
+            "refId": "E",
+            "target": "stats.gauges.mem.text"
           }
         ],
-        "title": "send/recv bytes",
+        "title": "system memory",
         "type": "timeseries"
       },
       {
@@ -183,38 +238,13 @@
                   "value": 80
                 }
               ]
-            }
+            },
+            "unit": "bytes"
           },
-          "overrides": [
-            {
-              "__systemRef": "hideSeriesFrom",
-              "matcher": {
-                "id": "byNames",
-                "options": {
-                  "mode": "exclude",
-                  "names": [
-                    "stats.io.op.recv.submitted",
-                    "stats.io.op.send.submitted"
-                  ],
-                  "prefix": "All except:",
-                  "readOnly": true
-                }
-              },
-              "properties": [
-                {
-                  "id": "custom.hideFrom",
-                  "value": {
-                    "legend": false,
-                    "tooltip": false,
-                    "viz": true
-                  }
-                }
-              ]
-            }
-          ]
+          "overrides": []
         },
         "gridPos": {
-          "h": 14,
+          "h": 19,
           "w": 24,
           "x": 0,
           "y": 14
@@ -240,8 +270,31 @@
             },
             "hide": false,
             "refCount": 0,
+            "refId": "C",
+            "target": "alias(stats.gauges.mem.malloc.hblkhd, 'mmap allocated')",
+            "textEditor": true
+          },
+          {
+            "datasource": {
+              "type": "graphite",
+              "uid": "P1D261A8554D2DA69"
+            },
+            "hide": false,
+            "refCount": 0,
             "refId": "A",
-            "target": "stats.io.op.all.completed"
+            "target": "alias(stats.gauges.mem.malloc.arena, 'heap allocated')",
+            "textEditor": true
+          },
+          {
+            "datasource": {
+              "type": "graphite",
+              "uid": "P1D261A8554D2DA69"
+            },
+            "hide": false,
+            "refCount": 0,
+            "refId": "D",
+            "target": "alias(stats.gauges.mem.malloc.uordblks, 'in-use allocations')",
+            "textEditor": true
           },
           {
             "datasource": {
@@ -251,7 +304,8 @@
             "hide": false,
             "refCount": 0,
             "refId": "B",
-            "target": "stats.io.op.recv.submitted"
+            "target": "alias(stats.gauges.mem.malloc.fordblks, 'free space')",
+            "textEditor": true
           },
           {
             "datasource": {
@@ -260,118 +314,23 @@
             },
             "hide": false,
             "refCount": 0,
-            "refId": "C",
-            "target": "stats.io.op.send.submitted"
-          }
-        ],
-        "title": "number of operations",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "default": false,
-          "type": "graphite",
-          "uid": "P1D261A8554D2DA69"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "barWidthFactor": 0.6,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "insertNulls": false,
-              "lineInterpolation": "smooth",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            }
+            "refId": "E",
+            "target": "alias(stats.gauges.mem.malloc.fsmblks, 'fastbin free')",
+            "textEditor": true
           },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "stats.io.recv_buf_grp.no_bufs"
-              },
-              "properties": [
-                {
-                  "id": "custom.axisPlacement",
-                  "value": "right"
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 8,
-          "w": 12,
-          "x": 0,
-          "y": 28
-        },
-        "id": 3,
-        "options": {
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": true
-          },
-          "tooltip": {
-            "mode": "single",
-            "sort": "none"
-          }
-        },
-        "targets": [
           {
             "datasource": {
               "type": "graphite",
               "uid": "P1D261A8554D2DA69"
             },
+            "hide": false,
             "refCount": 0,
-            "refId": "A",
-            "target": "stats.io.recv_buf_grp.*"
+            "refId": "F",
+            "target": "alias(stats.gauges.mem.malloc.keepcost, 'releasable')",
+            "textEditor": true
           }
         ],
-        "title": "receive buffers usage",
+        "title": "glibc memory",
         "type": "timeseries"
       }
     ],
@@ -387,9 +346,9 @@
     },
     "timepicker": {},
     "timezone": "browser",
-    "title": "io",
-    "uid": "adylc9vpricqod",
-    "version": 3,
+    "title": "memory",
+    "uid": "edyzj6r8ol0xsb",
+    "version": 4,
     "weekStart": ""
   },
   "folderUid": "",

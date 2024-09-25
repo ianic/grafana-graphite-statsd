@@ -78,148 +78,34 @@
                   "value": 80
                 }
               ]
-            },
-            "unit": "bytes"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 14,
-          "w": 24,
-          "x": 0,
-          "y": 0
-        },
-        "id": 2,
-        "options": {
-          "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": true
-          },
-          "tooltip": {
-            "mode": "single",
-            "sort": "none"
-          }
-        },
-        "targets": [
-          {
-            "datasource": {
-              "type": "graphite",
-              "uid": "P1D261A8554D2DA69"
-            },
-            "refCount": 0,
-            "refId": "A",
-            "target": "stats.io.recv_bytes"
-          },
-          {
-            "datasource": {
-              "type": "graphite",
-              "uid": "P1D261A8554D2DA69"
-            },
-            "hide": false,
-            "refCount": 0,
-            "refId": "B",
-            "target": "stats.io.send_bytes"
-          }
-        ],
-        "title": "send/recv bytes",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "default": false,
-          "type": "graphite",
-          "uid": "P1D261A8554D2DA69"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "barWidthFactor": 0.6,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "insertNulls": false,
-              "lineInterpolation": "smooth",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
             }
           },
           "overrides": [
             {
-              "__systemRef": "hideSeriesFrom",
               "matcher": {
-                "id": "byNames",
-                "options": {
-                  "mode": "exclude",
-                  "names": [
-                    "stats.io.op.recv.submitted",
-                    "stats.io.op.send.submitted"
-                  ],
-                  "prefix": "All except:",
-                  "readOnly": true
-                }
+                "id": "byName",
+                "options": "stats.gauges.topic.sub_bench.depth_bytes"
               },
               "properties": [
                 {
-                  "id": "custom.hideFrom",
-                  "value": {
-                    "legend": false,
-                    "tooltip": false,
-                    "viz": true
-                  }
+                  "id": "custom.axisPlacement",
+                  "value": "right"
+                },
+                {
+                  "id": "unit",
+                  "value": "bytes"
                 }
               ]
             }
           ]
         },
         "gridPos": {
-          "h": 14,
+          "h": 11,
           "w": 24,
           "x": 0,
-          "y": 14
+          "y": 0
         },
-        "id": 1,
+        "id": 3,
         "options": {
           "legend": {
             "calcs": [],
@@ -238,10 +124,9 @@
               "type": "graphite",
               "uid": "P1D261A8554D2DA69"
             },
-            "hide": false,
             "refCount": 0,
             "refId": "A",
-            "target": "stats.io.op.all.completed"
+            "target": "stats.gauges.topic.sub_bench.depth"
           },
           {
             "datasource": {
@@ -251,20 +136,10 @@
             "hide": false,
             "refCount": 0,
             "refId": "B",
-            "target": "stats.io.op.recv.submitted"
-          },
-          {
-            "datasource": {
-              "type": "graphite",
-              "uid": "P1D261A8554D2DA69"
-            },
-            "hide": false,
-            "refCount": 0,
-            "refId": "C",
-            "target": "stats.io.op.send.submitted"
+            "target": "stats.gauges.topic.sub_bench.depth_bytes"
           }
         ],
-        "title": "number of operations",
+        "title": "depth",
         "type": "timeseries"
       },
       {
@@ -330,24 +205,28 @@
             {
               "matcher": {
                 "id": "byName",
-                "options": "stats.io.recv_buf_grp.no_bufs"
+                "options": "stats.topic.sub_bench.message_bytes"
               },
               "properties": [
                 {
                   "id": "custom.axisPlacement",
                   "value": "right"
+                },
+                {
+                  "id": "unit",
+                  "value": "bytes"
                 }
               ]
             }
           ]
         },
         "gridPos": {
-          "h": 8,
-          "w": 12,
+          "h": 13,
+          "w": 24,
           "x": 0,
-          "y": 28
+          "y": 11
         },
-        "id": 3,
+        "id": 1,
         "options": {
           "legend": {
             "calcs": [],
@@ -368,10 +247,249 @@
             },
             "refCount": 0,
             "refId": "A",
-            "target": "stats.io.recv_buf_grp.*"
+            "target": "stats.topic.sub_bench.message_count"
+          },
+          {
+            "datasource": {
+              "type": "graphite",
+              "uid": "P1D261A8554D2DA69"
+            },
+            "hide": false,
+            "refCount": 0,
+            "refId": "B",
+            "target": "stats.topic.sub_bench.message_bytes"
           }
         ],
-        "title": "receive buffers usage",
+        "title": "messages count/bytes",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "default": false,
+          "type": "graphite",
+          "uid": "P1D261A8554D2DA69"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "smooth",
+              "lineStyle": {
+                "fill": "solid"
+              },
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "__systemRef": "hideSeriesFrom",
+              "matcher": {
+                "id": "byNames",
+                "options": {
+                  "mode": "exclude",
+                  "names": [
+                    "stats.topic.sub_bench.channel.ch.requeue_count"
+                  ],
+                  "prefix": "All except:",
+                  "readOnly": true
+                }
+              },
+              "properties": [
+                {
+                  "id": "custom.hideFrom",
+                  "value": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 24
+        },
+        "id": 4,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "graphite",
+              "uid": "P1D261A8554D2DA69"
+            },
+            "refCount": 0,
+            "refId": "A",
+            "target": "stats.topic.sub_bench.channel.ch.*"
+          }
+        ],
+        "title": "channel",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "default": false,
+          "type": "graphite",
+          "uid": "P1D261A8554D2DA69"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "smooth",
+              "lineStyle": {
+                "fill": "solid"
+              },
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 24
+        },
+        "id": 5,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "graphite",
+              "uid": "P1D261A8554D2DA69"
+            },
+            "refCount": 0,
+            "refId": "A",
+            "target": "stats.gauges.topic.sub_bench.channel.ch.depth"
+          },
+          {
+            "datasource": {
+              "type": "graphite",
+              "uid": "P1D261A8554D2DA69"
+            },
+            "hide": false,
+            "refCount": 0,
+            "refId": "B",
+            "target": "stats.gauges.topic.sub_bench.channel.ch.in_flight_count"
+          }
+        ],
+        "title": "channel depth/in_fligth",
         "type": "timeseries"
       }
     ],
@@ -387,8 +505,8 @@
     },
     "timepicker": {},
     "timezone": "browser",
-    "title": "io",
-    "uid": "adylc9vpricqod",
+    "title": "topic",
+    "uid": "edysbp7ubffnkb",
     "version": 3,
     "weekStart": ""
   },
