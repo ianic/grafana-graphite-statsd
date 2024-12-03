@@ -5,3 +5,4 @@ log/
 .idea/
 *.env
 /export.sh
+/exportr.sh

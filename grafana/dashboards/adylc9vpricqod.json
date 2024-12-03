@@ -193,7 +193,6 @@
                 "options": {
                   "mode": "exclude",
                   "names": [
-                    "stats.io.op.recv.submitted",
                     "stats.io.op.send.submitted"
                   ],
                   "prefix": "All except:",
@@ -373,6 +372,123 @@
         ],
         "title": "receive buffers usage",
         "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "default": false,
+          "type": "graphite",
+          "uid": "P1D261A8554D2DA69"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "smooth",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "stats.io.recv_buf_grp.no_bufs"
+              },
+              "properties": [
+                {
+                  "id": "custom.axisPlacement",
+                  "value": "right"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 28
+        },
+        "id": 4,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "graphite",
+              "uid": "P1D261A8554D2DA69"
+            },
+            "refCount": 0,
+            "refId": "A",
+            "target": "stats.io.cqes"
+          },
+          {
+            "datasource": {
+              "type": "graphite",
+              "uid": "P1D261A8554D2DA69"
+            },
+            "hide": false,
+            "refCount": 0,
+            "refId": "B",
+            "target": "stats.io.loops"
+          }
+        ],
+        "title": "io_uring lops and processed cqe's",
+        "type": "timeseries"
       }
     ],
     "refresh": "5s",
@@ -389,7 +505,7 @@
     "timezone": "browser",
     "title": "io",
     "uid": "adylc9vpricqod",
-    "version": 3,
+    "version": 5,
     "weekStart": ""
   },
   "folderUid": "",

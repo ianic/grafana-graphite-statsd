@@ -83,36 +83,133 @@
           },
           "overrides": [
             {
-              "__systemRef": "hideSeriesFrom",
               "matcher": {
-                "id": "byNames",
-                "options": {
-                  "mode": "exclude",
-                  "names": [
-                    "rss"
-                  ],
-                  "prefix": "All except:",
-                  "readOnly": true
-                }
+                "id": "byName",
+                "options": "stats.broker.total_bytes"
               },
               "properties": [
                 {
-                  "id": "custom.hideFrom",
-                  "value": {
-                    "legend": false,
-                    "tooltip": false,
-                    "viz": true
-                  }
+                  "id": "custom.axisPlacement",
+                  "value": "right"
+                },
+                {
+                  "id": "unit",
+                  "value": "bytes"
                 }
               ]
             }
           ]
         },
         "gridPos": {
-          "h": 14,
+          "h": 15,
           "w": 24,
           "x": 0,
           "y": 0
+        },
+        "id": 3,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "graphite",
+              "uid": "P1D261A8554D2DA69"
+            },
+            "refCount": 0,
+            "refId": "A",
+            "target": "stats.gauges.broker.bytes"
+          },
+          {
+            "datasource": {
+              "type": "graphite",
+              "uid": "P1D261A8554D2DA69"
+            },
+            "hide": false,
+            "refCount": 0,
+            "refId": "B",
+            "target": "stats.gauges.broker.capacity"
+          }
+        ],
+        "title": "broker total bytes / allocated bytes (capacity)",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "default": false,
+          "type": "graphite",
+          "uid": "P1D261A8554D2DA69"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "smooth",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "bytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 14,
+          "w": 24,
+          "x": 0,
+          "y": 15
         },
         "id": 2,
         "options": {
@@ -247,7 +344,7 @@
           "h": 19,
           "w": 24,
           "x": 0,
-          "y": 14
+          "y": 29
         },
         "id": 1,
         "options": {
@@ -348,7 +445,7 @@
     "timezone": "browser",
     "title": "memory",
     "uid": "edyzj6r8ol0xsb",
-    "version": 4,
+    "version": 6,
     "weekStart": ""
   },
   "folderUid": "",

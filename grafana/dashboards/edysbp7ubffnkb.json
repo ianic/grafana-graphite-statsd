@@ -84,7 +84,7 @@
             {
               "matcher": {
                 "id": "byName",
-                "options": "stats.gauges.topic.sub_bench.depth_bytes"
+                "options": "stats.gauges.topic.sub_bench.bytes"
               },
               "properties": [
                 {
@@ -94,6 +94,46 @@
                 {
                   "id": "unit",
                   "value": "bytes"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "stats.gauges.topic.sub_bench.capacity"
+              },
+              "properties": [
+                {
+                  "id": "custom.axisPlacement",
+                  "value": "right"
+                },
+                {
+                  "id": "unit",
+                  "value": "bytes"
+                }
+              ]
+            },
+            {
+              "__systemRef": "hideSeriesFrom",
+              "matcher": {
+                "id": "byNames",
+                "options": {
+                  "mode": "exclude",
+                  "names": [
+                    "stats.gauges.topic.sub_bench.bytes"
+                  ],
+                  "prefix": "All except:",
+                  "readOnly": true
+                }
+              },
+              "properties": [
+                {
+                  "id": "custom.hideFrom",
+                  "value": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": true
+                  }
                 }
               ]
             }
@@ -126,7 +166,7 @@
             },
             "refCount": 0,
             "refId": "A",
-            "target": "stats.gauges.topic.sub_bench.depth"
+            "target": "stats.gauges.topic.sub_bench.msgs"
           },
           {
             "datasource": {
@@ -136,7 +176,17 @@
             "hide": false,
             "refCount": 0,
             "refId": "B",
-            "target": "stats.gauges.topic.sub_bench.depth_bytes"
+            "target": "stats.gauges.topic.sub_bench.bytes"
+          },
+          {
+            "datasource": {
+              "type": "graphite",
+              "uid": "P1D261A8554D2DA69"
+            },
+            "hide": false,
+            "refCount": 0,
+            "refId": "C",
+            "target": "stats.gauges.topic.sub_bench.capacity"
           }
         ],
         "title": "depth",
@@ -325,32 +375,7 @@
               ]
             }
           },
-          "overrides": [
-            {
-              "__systemRef": "hideSeriesFrom",
-              "matcher": {
-                "id": "byNames",
-                "options": {
-                  "mode": "exclude",
-                  "names": [
-                    "stats.topic.sub_bench.channel.ch.requeue_count"
-                  ],
-                  "prefix": "All except:",
-                  "readOnly": true
-                }
-              },
-              "properties": [
-                {
-                  "id": "custom.hideFrom",
-                  "value": {
-                    "legend": false,
-                    "tooltip": false,
-                    "viz": true
-                  }
-                }
-              ]
-            }
-          ]
+          "overrides": []
         },
         "gridPos": {
           "h": 8,
@@ -447,7 +472,32 @@
               ]
             }
           },
-          "overrides": []
+          "overrides": [
+            {
+              "__systemRef": "hideSeriesFrom",
+              "matcher": {
+                "id": "byNames",
+                "options": {
+                  "mode": "exclude",
+                  "names": [
+                    "stats.gauges.topic.sub_bench.channel.ch.depth"
+                  ],
+                  "prefix": "All except:",
+                  "readOnly": true
+                }
+              },
+              "properties": [
+                {
+                  "id": "custom.hideFrom",
+                  "value": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": true
+                  }
+                }
+              ]
+            }
+          ]
         },
         "gridPos": {
           "h": 8,
@@ -507,7 +557,7 @@
     "timezone": "browser",
     "title": "topic",
     "uid": "edysbp7ubffnkb",
-    "version": 3,
+    "version": 5,
     "weekStart": ""
   },
   "folderUid": "",
