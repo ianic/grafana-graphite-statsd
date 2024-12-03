@@ -110,7 +110,7 @@
             },
             "refCount": 0,
             "refId": "A",
-            "target": "stats.io.recv_bytes"
+            "target": "stats.nsq.io.recv_bytes"
           },
           {
             "datasource": {
@@ -120,7 +120,7 @@
             "hide": false,
             "refCount": 0,
             "refId": "B",
-            "target": "stats.io.send_bytes"
+            "target": "stats.nsq.io.send_bytes"
           }
         ],
         "title": "send/recv bytes",
@@ -193,7 +193,7 @@
                 "options": {
                   "mode": "exclude",
                   "names": [
-                    "stats.io.op.send.submitted"
+                    "stats.nsq.io.op.all.completed"
                   ],
                   "prefix": "All except:",
                   "readOnly": true
@@ -240,7 +240,7 @@
             "hide": false,
             "refCount": 0,
             "refId": "A",
-            "target": "stats.io.op.all.completed"
+            "target": "stats.nsq.io.op.all.completed"
           },
           {
             "datasource": {
@@ -250,7 +250,7 @@
             "hide": false,
             "refCount": 0,
             "refId": "B",
-            "target": "stats.io.op.recv.submitted"
+            "target": "stats.nsq.io.op.all.submitted"
           },
           {
             "datasource": {
@@ -260,7 +260,7 @@
             "hide": false,
             "refCount": 0,
             "refId": "C",
-            "target": "stats.io.op.send.submitted"
+            "target": "stats.nsq.io.op.all.restarted"
           }
         ],
         "title": "number of operations",
@@ -329,12 +329,36 @@
             {
               "matcher": {
                 "id": "byName",
-                "options": "stats.io.recv_buf_grp.no_bufs"
+                "options": "stats.nsq.io.recv_buf_grp.no_bufs"
               },
               "properties": [
                 {
                   "id": "custom.axisPlacement",
                   "value": "right"
+                }
+              ]
+            },
+            {
+              "__systemRef": "hideSeriesFrom",
+              "matcher": {
+                "id": "byNames",
+                "options": {
+                  "mode": "exclude",
+                  "names": [
+                    "stats.nsq.io.recv_buf_grp.success"
+                  ],
+                  "prefix": "All except:",
+                  "readOnly": true
+                }
+              },
+              "properties": [
+                {
+                  "id": "custom.hideFrom",
+                  "value": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": true
+                  }
                 }
               ]
             }
@@ -367,7 +391,7 @@
             },
             "refCount": 0,
             "refId": "A",
-            "target": "stats.io.recv_buf_grp.*"
+            "target": "stats.nsq.io.recv_buf_grp.*"
           }
         ],
         "title": "receive buffers usage",
@@ -436,7 +460,7 @@
             {
               "matcher": {
                 "id": "byName",
-                "options": "stats.io.recv_buf_grp.no_bufs"
+                "options": "stats.nsq.io.recv_buf_grp.no_bufs"
               },
               "properties": [
                 {
@@ -474,7 +498,7 @@
             },
             "refCount": 0,
             "refId": "A",
-            "target": "stats.io.cqes"
+            "target": "stats.nsq.io.cqes"
           },
           {
             "datasource": {
@@ -484,7 +508,7 @@
             "hide": false,
             "refCount": 0,
             "refId": "B",
-            "target": "stats.io.loops"
+            "target": "stats.nsq.io.loops"
           }
         ],
         "title": "io_uring lops and processed cqe's",
@@ -505,7 +529,7 @@
     "timezone": "browser",
     "title": "io",
     "uid": "adylc9vpricqod",
-    "version": 5,
+    "version": 8,
     "weekStart": ""
   },
   "folderUid": "",

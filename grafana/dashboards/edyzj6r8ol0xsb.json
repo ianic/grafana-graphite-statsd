@@ -85,7 +85,7 @@
             {
               "matcher": {
                 "id": "byName",
-                "options": "stats.broker.total_bytes"
+                "options": "stats.nsq.broker.total_bytes"
               },
               "properties": [
                 {
@@ -127,7 +127,7 @@
             },
             "refCount": 0,
             "refId": "A",
-            "target": "stats.gauges.broker.bytes"
+            "target": "stats.gauges.nsq.broker.bytes"
           },
           {
             "datasource": {
@@ -137,7 +137,7 @@
             "hide": false,
             "refCount": 0,
             "refId": "B",
-            "target": "stats.gauges.broker.capacity"
+            "target": "stats.gauges.nsq.broker.capacity"
           }
         ],
         "title": "broker total bytes / allocated bytes (capacity)",
@@ -232,7 +232,7 @@
             },
             "refCount": 0,
             "refId": "A",
-            "target": "alias(stats.gauges.mem.size, 'vm')"
+            "target": "alias(stats.gauges.nsq.mem.size, 'vm')"
           },
           {
             "datasource": {
@@ -242,7 +242,7 @@
             "hide": false,
             "refCount": 0,
             "refId": "B",
-            "target": "alias(stats.gauges.mem.rss, 'rss')"
+            "target": "alias(stats.gauges.nsq.mem.rss, 'rss')"
           },
           {
             "datasource": {
@@ -252,7 +252,7 @@
             "hide": true,
             "refCount": 0,
             "refId": "C",
-            "target": "alias(stats.gauges.mem.share, 'share')"
+            "target": "alias(stats.gauges.nsq.mem.share, 'share')"
           },
           {
             "datasource": {
@@ -262,7 +262,7 @@
             "hide": true,
             "refCount": 0,
             "refId": "D",
-            "target": "alias(stats.gauges.mem.data, 'data')"
+            "target": "alias(stats.gauges.nsq.mem.data, 'data')"
           },
           {
             "datasource": {
@@ -272,7 +272,7 @@
             "hide": true,
             "refCount": 0,
             "refId": "E",
-            "target": "stats.gauges.mem.text"
+            "target": "stats.gauges.nsq.mem.text"
           }
         ],
         "title": "system memory",
@@ -368,7 +368,7 @@
             "hide": false,
             "refCount": 0,
             "refId": "C",
-            "target": "alias(stats.gauges.mem.malloc.hblkhd, 'mmap allocated')",
+            "target": "alias(stats.gauges.nsq.mem.malloc.hblkhd, 'mmap allocated')",
             "textEditor": true
           },
           {
@@ -379,7 +379,7 @@
             "hide": false,
             "refCount": 0,
             "refId": "A",
-            "target": "alias(stats.gauges.mem.malloc.arena, 'heap allocated')",
+            "target": "alias(stats.gauges.nsq.mem.malloc.arena, 'heap allocated')",
             "textEditor": true
           },
           {
@@ -390,7 +390,7 @@
             "hide": false,
             "refCount": 0,
             "refId": "D",
-            "target": "alias(stats.gauges.mem.malloc.uordblks, 'in-use allocations')",
+            "target": "alias(stats.gauges.nsq.mem.malloc.uordblks, 'in-use allocations')",
             "textEditor": true
           },
           {
@@ -401,7 +401,7 @@
             "hide": false,
             "refCount": 0,
             "refId": "B",
-            "target": "alias(stats.gauges.mem.malloc.fordblks, 'free space')",
+            "target": "alias(stats.gauges.nsq.mem.malloc.fordblks, 'free space')",
             "textEditor": true
           },
           {
@@ -412,7 +412,7 @@
             "hide": false,
             "refCount": 0,
             "refId": "E",
-            "target": "alias(stats.gauges.mem.malloc.fsmblks, 'fastbin free')",
+            "target": "alias(stats.gauges.nsq.mem.malloc.fsmblks, 'fastbin free')",
             "textEditor": true
           },
           {
@@ -423,7 +423,7 @@
             "hide": false,
             "refCount": 0,
             "refId": "F",
-            "target": "alias(stats.gauges.mem.malloc.keepcost, 'releasable')",
+            "target": "alias(stats.gauges.nsq.mem.malloc.keepcost, 'releasable')",
             "textEditor": true
           }
         ],
@@ -445,7 +445,7 @@
     "timezone": "browser",
     "title": "memory",
     "uid": "edyzj6r8ol0xsb",
-    "version": 6,
+    "version": 10,
     "weekStart": ""
   },
   "folderUid": "",

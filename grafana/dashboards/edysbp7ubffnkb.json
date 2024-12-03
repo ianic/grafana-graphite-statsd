@@ -70,8 +70,7 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
-                  "value": null
+                  "color": "green"
                 },
                 {
                   "color": "red",
@@ -84,7 +83,7 @@
             {
               "matcher": {
                 "id": "byName",
-                "options": "stats.gauges.topic.sub_bench.bytes"
+                "options": "stats.gauges.nsq.topic.sub_bench.bytes"
               },
               "properties": [
                 {
@@ -100,7 +99,7 @@
             {
               "matcher": {
                 "id": "byName",
-                "options": "stats.gauges.topic.sub_bench.capacity"
+                "options": "stats.gauges.nsq.topic.sub_bench.capacity"
               },
               "properties": [
                 {
@@ -110,30 +109,6 @@
                 {
                   "id": "unit",
                   "value": "bytes"
-                }
-              ]
-            },
-            {
-              "__systemRef": "hideSeriesFrom",
-              "matcher": {
-                "id": "byNames",
-                "options": {
-                  "mode": "exclude",
-                  "names": [
-                    "stats.gauges.topic.sub_bench.bytes"
-                  ],
-                  "prefix": "All except:",
-                  "readOnly": true
-                }
-              },
-              "properties": [
-                {
-                  "id": "custom.hideFrom",
-                  "value": {
-                    "legend": false,
-                    "tooltip": false,
-                    "viz": true
-                  }
                 }
               ]
             }
@@ -166,7 +141,7 @@
             },
             "refCount": 0,
             "refId": "A",
-            "target": "stats.gauges.topic.sub_bench.msgs"
+            "target": "stats.gauges.nsq.topic.sub_bench.msgs"
           },
           {
             "datasource": {
@@ -176,7 +151,7 @@
             "hide": false,
             "refCount": 0,
             "refId": "B",
-            "target": "stats.gauges.topic.sub_bench.bytes"
+            "target": "stats.gauges.nsq.topic.sub_bench.bytes"
           },
           {
             "datasource": {
@@ -186,7 +161,7 @@
             "hide": false,
             "refCount": 0,
             "refId": "C",
-            "target": "stats.gauges.topic.sub_bench.capacity"
+            "target": "stats.gauges.nsq.topic.sub_bench.capacity"
           }
         ],
         "title": "depth",
@@ -241,8 +216,7 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
-                  "value": null
+                  "color": "green"
                 },
                 {
                   "color": "red",
@@ -255,7 +229,7 @@
             {
               "matcher": {
                 "id": "byName",
-                "options": "stats.topic.sub_bench.message_bytes"
+                "options": "stats.nsq.topic.sub_bench.message_bytes"
               },
               "properties": [
                 {
@@ -265,6 +239,30 @@
                 {
                   "id": "unit",
                   "value": "bytes"
+                }
+              ]
+            },
+            {
+              "__systemRef": "hideSeriesFrom",
+              "matcher": {
+                "id": "byNames",
+                "options": {
+                  "mode": "exclude",
+                  "names": [
+                    "stats.nsq.topic.sub_bench.message_count"
+                  ],
+                  "prefix": "All except:",
+                  "readOnly": true
+                }
+              },
+              "properties": [
+                {
+                  "id": "custom.hideFrom",
+                  "value": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": true
+                  }
                 }
               ]
             }
@@ -297,7 +295,7 @@
             },
             "refCount": 0,
             "refId": "A",
-            "target": "stats.topic.sub_bench.message_count"
+            "target": "stats.nsq.topic.sub_bench.message_count"
           },
           {
             "datasource": {
@@ -307,7 +305,7 @@
             "hide": false,
             "refCount": 0,
             "refId": "B",
-            "target": "stats.topic.sub_bench.message_bytes"
+            "target": "stats.nsq.topic.sub_bench.message_bytes"
           }
         ],
         "title": "messages count/bytes",
@@ -365,8 +363,7 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
-                  "value": null
+                  "color": "green"
                 },
                 {
                   "color": "red",
@@ -375,7 +372,32 @@
               ]
             }
           },
-          "overrides": []
+          "overrides": [
+            {
+              "__systemRef": "hideSeriesFrom",
+              "matcher": {
+                "id": "byNames",
+                "options": {
+                  "mode": "exclude",
+                  "names": [
+                    "stats.nsq.topic.sub_bench.channel.ch.finish_count"
+                  ],
+                  "prefix": "All except:",
+                  "readOnly": true
+                }
+              },
+              "properties": [
+                {
+                  "id": "custom.hideFrom",
+                  "value": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": true
+                  }
+                }
+              ]
+            }
+          ]
         },
         "gridPos": {
           "h": 8,
@@ -404,7 +426,7 @@
             },
             "refCount": 0,
             "refId": "A",
-            "target": "stats.topic.sub_bench.channel.ch.*"
+            "target": "stats.nsq.topic.sub_bench.channel.ch.*"
           }
         ],
         "title": "channel",
@@ -462,8 +484,7 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
-                  "value": null
+                  "color": "green"
                 },
                 {
                   "color": "red",
@@ -480,7 +501,7 @@
                 "options": {
                   "mode": "exclude",
                   "names": [
-                    "stats.gauges.topic.sub_bench.channel.ch.depth"
+                    "stats.gauges.nsq.topic.sub_bench.channel.ch.depth"
                   ],
                   "prefix": "All except:",
                   "readOnly": true
@@ -526,7 +547,7 @@
             },
             "refCount": 0,
             "refId": "A",
-            "target": "stats.gauges.topic.sub_bench.channel.ch.depth"
+            "target": "stats.gauges.nsq.topic.sub_bench.channel.ch.depth"
           },
           {
             "datasource": {
@@ -536,7 +557,7 @@
             "hide": false,
             "refCount": 0,
             "refId": "B",
-            "target": "stats.gauges.topic.sub_bench.channel.ch.in_flight_count"
+            "target": "stats.gauges.nsq.topic.sub_bench.channel.ch.in_flight_count"
           }
         ],
         "title": "channel depth/in_fligth",
@@ -550,14 +571,14 @@
       "list": []
     },
     "time": {
-      "from": "now-5m",
+      "from": "now-30m",
       "to": "now"
     },
     "timepicker": {},
     "timezone": "browser",
     "title": "topic",
     "uid": "edysbp7ubffnkb",
-    "version": 5,
+    "version": 7,
     "weekStart": ""
   },
   "folderUid": "",
